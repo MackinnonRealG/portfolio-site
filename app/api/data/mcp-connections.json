@@ -1,0 +1,9 @@
+[
+  { "name": "Slack", "status": "connected", "verified": "2026-05-11", "source": "active MCP tool ID 3cee0db7" },
+  { "name": "Notion", "status": "connected", "verified": "2026-05-11", "source": "active MCP tool ID 9bd4d3b5" },
+  { "name": "Figma (MCP)", "status": "connected", "verified": "2026-05-11", "source": "active MCP tool ID 6a151588" },
+  { "name": "Airtable", "status": "connected", "verified": "2026-05-11", "source": "active MCP tool ID cebc08fe" },
+  { "name": "Google Calendar", "status": "connected", "verified": "2026-05-11", "source": "active MCP tool ID f072e07c" },
+  { "name": "Google Drive", "status": "connected", "verified": "2026-05-11", "source": "active MCP tool ID bbcc1fdc" },
+  { "name": "Chrome Browser", "status": "connected", "verified": "2026-05-11", "source": "active MCP tool Claude_in_Chrome" }
+]

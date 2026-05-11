@@ -1,0 +1,15 @@
+{
+  "plan": "Max (5x)",
+  "weeklyReset": "Sat 7:00 AM",
+  "extraUsage": true,
+  "limits": {
+    "currentSession": { "used": 12, "label": "Current session", "resetNote": "Resets in 3 hr 37 min" },
+    "weeklyAll": { "used": 5, "label": "All models", "resetNote": "Resets Sat 7:00 AM" },
+    "weeklySonnet": { "used": 0, "label": "Sonnet only", "resetNote": "" },
+    "weeklyDesign": { "used": 0, "label": "Claude Design", "resetNote": "" }
+  },
+  "features": {
+    "routineRuns": { "used": 0, "total": 15 }
+  },
+  "lastUpdated": "2026-05-11T20:51:34Z"
+}

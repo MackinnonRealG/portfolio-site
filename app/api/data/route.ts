@@ -87,13 +87,60 @@ function getCalendarCache() {
   }
 }
 
+function getPlanUsage() {
+  const cachePath = join(process.cwd(), "app/api/data/plan-usage.json");
+  if (!existsSync(cachePath)) return null;
+  try {
+    return JSON.parse(readFileSync(cachePath, "utf-8"));
+  } catch {
+    return null;
+  }
+}
+
 function getToolVersions() {
   return {
     git: run("git --version").replace("git version ", "").split(" ")[0],
     node: run("node --version").replace("v", ""),
     python: run("python3 --version").replace("Python ", ""),
     docker: run("docker --version 2>/dev/null") ? true : false,
+    obsidian: existsSync(join(homedir(), "Documents", "Obsidian Vault", ".obsidian")),
+    telegram: !!run("python3 -c \"import telegram; print(telegram.__version__)\" 2>/dev/null"),
+    gh: !!run("gh auth status 2>&1"),
   };
+}
+
+function getPlugins() {
+  const settingsPath = join(homedir(), ".claude", "settings.json");
+  if (!existsSync(settingsPath)) return [];
+  try {
+    const settings = JSON.parse(readFileSync(settingsPath, "utf-8"));
+    const enabled = settings.enabledPlugins || {};
+    const PLUGIN_NAMES: Record<string, string> = {
+      "code-simplifier@claude-plugins-official": "Code Simplifier",
+      "frontend-design@claude-plugins-official": "Frontend Design",
+      "commit-commands@claude-plugins-official": "Commit Commands",
+      "figma@claude-plugins-official": "Figma Plugin",
+      "adspirer-ads-agent@claude-plugins-official": "Adspirer Ads Agent",
+      "claude-code-setup@claude-plugins-official": "Claude Code Setup",
+      "github@claude-plugins-official": "GitHub Plugin",
+    };
+    return Object.entries(PLUGIN_NAMES).map(([key, name]) => ({
+      name,
+      status: enabled[key] === true ? "connected" : enabled[key] === false ? "disabled" : "disconnected",
+    }));
+  } catch {
+    return [];
+  }
+}
+
+function getMcpConnections() {
+  const connCachePath = join(process.cwd(), "app/api/data/mcp-connections.json");
+  if (existsSync(connCachePath)) {
+    try {
+      return JSON.parse(readFileSync(connCachePath, "utf-8"));
+    } catch { /* fall through */ }
+  }
+  return null;
 }
 
 export async function GET() {
@@ -122,19 +169,20 @@ export async function GET() {
     return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
   });
 
+  const mcpCache = getMcpConnections();
+  const plugins = getPlugins();
+
   const connections = {
-    mcp: [
+    mcp: mcpCache || [
       { name: "Slack", status: "connected" },
       { name: "Notion", status: "connected" },
-      { name: "Figma", status: "connected" },
+      { name: "Figma (MCP)", status: "connected" },
       { name: "Airtable", status: "connected" },
       { name: "Google Calendar", status: "connected" },
       { name: "Google Drive", status: "connected" },
       { name: "Chrome Browser", status: "connected" },
-      { name: "Linear", status: "disconnected" },
-      { name: "Gmail", status: "disconnected" },
     ],
-    plugins: [
+    plugins: plugins.length > 0 ? plugins : [
       { name: "Code Simplifier", status: "connected" },
       { name: "Frontend Design", status: "connected" },
       { name: "Commit Commands", status: "connected" },
@@ -144,16 +192,18 @@ export async function GET() {
       { name: "GitHub Plugin", status: "disabled" },
     ],
     tools: [
-      { name: "GitHub (MackinnonRealG)", status: "connected" },
+      { name: "GitHub (MackinnonRealG)", status: tools.gh ? "connected" : "disconnected" },
       { name: "Claude Code (Opus 4.6)", status: "connected" },
-      { name: "Obsidian Vault", status: "connected" },
-      { name: `Git v${tools.git}`, status: "connected" },
-      { name: `Node.js v${tools.node}`, status: "connected" },
-      { name: `Python ${tools.python}`, status: "connected" },
+      { name: "Obsidian Vault", status: tools.obsidian ? "connected" : "disconnected" },
+      { name: `Git v${tools.git}`, status: tools.git ? "connected" : "disconnected" },
+      { name: `Node.js v${tools.node}`, status: tools.node ? "connected" : "disconnected" },
+      { name: `Python ${tools.python}`, status: tools.python ? "connected" : "disconnected" },
       { name: "Docker", status: tools.docker ? "connected" : "disconnected" },
-      { name: "Telegram (python-telegram-bot)", status: "connected" },
+      { name: "Telegram Bot", status: tools.telegram ? "connected" : "disconnected" },
     ],
   };
+
+  const planUsage = getPlanUsage();
 
   const now = new Date();
 
@@ -166,6 +216,7 @@ export async function GET() {
     projects,
     connections,
     claudeStats,
+    planUsage,
     calendarEvents,
     timestamp: now.toISOString(),
     date: now.toLocaleDateString("en-GB", {
