@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MackinnonRealG — Portfolio</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">MackinnonRealG</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-greeting">Hello, I'm</p>
+      <h1 class="hero-name">MackinnonRealG</h1>
+      <p class="hero-tagline">Developer &bull; Builder &bull; Creator</p>
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number" data-target="12">0</span>
+          <span class="stat-label">Projects Completed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" data-target="3">0</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" data-target="15">0</span>
+          <span class="stat-label">Technologies</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" data-target="500">0</span>
+          <span class="stat-label">Commits</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+
+        <article class="project-card">
+          <div class="project-image"></div>
+          <div class="project-body">
+            <h3>E-Commerce Platform</h3>
+            <p>Full-stack online store with cart, checkout, and payment integration.</p>
+            <div class="project-tags">
+              <span>React</span><span>Node.js</span><span>Stripe</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-small">GitHub</a>
+              <a href="#" class="btn btn-small btn-outline">Live Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image"></div>
+          <div class="project-body">
+            <h3>Task Manager App</h3>
+            <p>Kanban-style task board with drag-and-drop and real-time sync.</p>
+            <div class="project-tags">
+              <span>Vue.js</span><span>Firebase</span><span>CSS Grid</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-small">GitHub</a>
+              <a href="#" class="btn btn-small btn-outline">Live Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image"></div>
+          <div class="project-body">
+            <h3>Weather Dashboard</h3>
+            <p>Real-time weather data with interactive maps and 7-day forecasts.</p>
+            <div class="project-tags">
+              <span>JavaScript</span><span>API</span><span>Chart.js</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-small">GitHub</a>
+              <a href="#" class="btn btn-small btn-outline">Live Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image"></div>
+          <div class="project-body">
+            <h3>Portfolio Site</h3>
+            <p>This site — built with vanilla HTML, CSS, and JS. No frameworks.</p>
+            <div class="project-tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-small">GitHub</a>
+              <a href="#" class="btn btn-small btn-outline">Live Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image"></div>
+          <div class="project-body">
+            <h3>Chat Application</h3>
+            <p>Real-time messaging with rooms, typing indicators, and file sharing.</p>
+            <div class="project-tags">
+              <span>Socket.io</span><span>Express</span><span>MongoDB</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-small">GitHub</a>
+              <a href="#" class="btn btn-small btn-outline">Live Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image"></div>
+          <div class="project-body">
+            <h3>AI Image Generator</h3>
+            <p>Text-to-image tool powered by generative AI with style controls.</p>
+            <div class="project-tags">
+              <span>Python</span><span>FastAPI</span><span>React</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-small">GitHub</a>
+              <a href="#" class="btn btn-small btn-outline">Live Demo</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills-section" id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills & Tech Stack</h2>
+      <div class="skills-grid">
+
+        <div class="skill-category">
+          <h3>Frontend</h3>
+          <div class="skill-item"><span>HTML / CSS</span><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+          <div class="skill-item"><span>JavaScript</span><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+          <div class="skill-item"><span>React</span><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+          <div class="skill-item"><span>Tailwind CSS</span><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Backend</h3>
+          <div class="skill-item"><span>Node.js</span><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+          <div class="skill-item"><span>Python</span><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+          <div class="skill-item"><span>PostgreSQL</span><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+          <div class="skill-item"><span>REST APIs</span><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Tools</h3>
+          <div class="skill-item"><span>Git / GitHub</span><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+          <div class="skill-item"><span>Docker</span><div class="skill-bar"><div class="skill-fill" data-width="70"></div></div></div>
+          <div class="skill-item"><span>VS Code</span><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+          <div class="skill-item"><span>CI/CD</span><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <input type="text" id="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/MackinnonRealG" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#" target="_blank" rel="noopener">Twitter</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 MackinnonRealG. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

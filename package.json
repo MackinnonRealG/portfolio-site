@@ -1,0 +1,9 @@
+{
+  "name": "portfolio-site",
+  "version": "1.0.0",
+  "description": "Personal portfolio dashboard site",
+  "scripts": {
+    "dev": "npx live-server --port=3000 --no-browser",
+    "build": "echo 'Static site — no build step needed'"
+  }
+}
