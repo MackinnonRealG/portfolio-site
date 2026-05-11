@@ -15,19 +15,24 @@ const LINKS = [
 
 export default function Nav() {
   const pathname = usePathname();
-  const [time, setTime] = useState(new Date());
+  const [mounted, setMounted] = useState(false);
+  const [time, setTime] = useState<Date | null>(null);
 
   useEffect(() => {
+    setMounted(true);
+    setTime(new Date());
     const t = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(t);
   }, []);
 
-  const date = new Date().toLocaleDateString("en-GB", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const date = mounted
+    ? new Date().toLocaleDateString("en-GB", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : "";
 
   return (
     <header className="sticky top-0 z-50 bg-slate-950/85 backdrop-blur-xl border-b border-slate-800">
@@ -57,7 +62,7 @@ export default function Nav() {
         </div>
         <div className="flex items-center gap-6 text-sm">
           <span className="text-slate-400 hidden sm:inline">{date}</span>
-          <span className="font-mono text-blue-400 tabular-nums">{time.toLocaleTimeString("en-GB")}</span>
+          <span className="font-mono text-blue-400 tabular-nums">{time ? time.toLocaleTimeString("en-GB") : " "}</span>
         </div>
       </div>
       {/* Mobile nav */}
